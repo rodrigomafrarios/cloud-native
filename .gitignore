@@ -1,1 +1,4 @@
-terraform/.terraform
+./terraform/dev/.terraform
+./terraform/dev/.terraform.lock.hcl
+./terraform/prod/.terraform
+./terraform/prod/.terraform.lock.hcl
