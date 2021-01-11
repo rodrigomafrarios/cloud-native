@@ -1,4 +1,4 @@
-./terraform/environaments/dev/.terraform
-./terraform/environaments/dev/.terraform.lock.hcl
-./terraform/environaments/prod/.terraform
-./terraform/environaments/prod/.terraform.lock.hcl
+terraform/environments/dev/.terraform
+terraform/environments/dev/.terraform.lock.hcl
+terraform/environments/prod/.terraform
+terraform/environments/prod/.terraform.lock.hcl
