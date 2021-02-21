@@ -1,0 +1,24 @@
+service: sms-notification
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+
+functions:
+  send_sms:
+    memorySize: ${self:custom.memorySize.${self:custom.stage}}
+    handler: handler.send
+    role: ${ssm:${self:custom.stage}-sms-iam-role}
+    events:
+      - sqs: ${ssm:${self:custom.stage}-sms-sqs}
+    environment:
+      SMS_PHONE_FROM: ${ssm:${self:custom.stage}-sms-phone-from}
+      SMS_PHONE_TO: ${ssm:${self:custom.stage}-sms-phone-to}
+      MESSAGE_BIRD_API_KEY: ${ssm:${self:custom.stage}-message-bird-api-key}
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  memorySize:
+    dev: 128
+    prod: 2048
